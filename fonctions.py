@@ -15,6 +15,12 @@ def update_db(csv_url, outputfile):
     # logging.info('update_db: Mise a jour de la base de données')
 
 update_db('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv', list_ville(0)+'.csv')
+update_db('https://data.rennesmetropole.fr/explore/dataset/prochains-passages-des-lignes-de-metro-du-reseau-star-en-temps-reel/download/?format=csv&timezone=Europe/Berlin&lang=fr&use_labels_for_header=true&csv_separator=%3B', list_ville(1)+'.csv')
+# update_db('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv', list_ville(2)+'.csv')
+# update_db('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv', list_ville(3)+'.csv')
+
+
+
 
 
 
@@ -27,11 +33,29 @@ def insert_csv_row(csv_row, cursor, ville):
     csv_row : retrieve the lines on the csv file.
 
     """
-    liste_row = csv_row.strip().split(";")
-    new_row = [liste_row[3], liste_row[4], liste_row[5], liste_row[7], ville]
+    if ville == 'Montpellier':
+        liste_row = csv_row.strip().split(";")
+        new_row = [liste_row[3], liste_row[4], liste_row[5], liste_row[7], ville]
+        cursor.execute("""INSERT INTO infoarret VALUES (?,?,?,?,?) """,
+                    new_row)
+    elif ville == 'Rennes':
+        liste_row = csv_row.strip().split(";")
+        horaire = ''.join(liste_row[7].split('T')[-1]).split('+')[0]
+        print(horaire)
+        new_row = [liste_row[5], liste_row[1], liste_row[3], horaire, ville]
+        cursor.execute("""INSERT INTO infoarret VALUES (?,?,?,?,?) """,
+                    new_row)
+    # elif ville == 'Toulouse':
+    #     liste_row = csv_row.strip().split(";")
+    #     new_row = [liste_row[3], liste_row[4], liste_row[5], liste_row[7], ville]
+    #     cursor.execute("""INSERT INTO infoarret VALUES (?,?,?,?,?) """,
+    #                 new_row)
+    # elif ville == 'Lyon':
+    #     liste_row = csv_row.strip().split(";")
+    #     new_row = [liste_row[3], liste_row[4], liste_row[5], liste_row[7], ville]
+    #     cursor.execute("""INSERT INTO infoarret VALUES (?,?,?,?,?) """,
+    #                 new_row)
 
-    cursor.execute("""INSERT INTO infoarret VALUES (?,?,?,?,?) """,
-                   new_row)
 
 
 
@@ -77,10 +101,18 @@ def main():
     conn = sqlite3.connect('transport.db')
     c = conn.cursor()
     create_schema(c)
-    load_csv(list_ville(0)+'.csv', c, list_ville(0))
-    conn.commit()
-    conn.close()
-
+    if list_ville(0) == list_ville(0):
+        load_csv(list_ville(0)+'.csv', c, list_ville(0))
+        conn.commit()
+    if list_ville(1) == list_ville(1):
+        load_csv(list_ville(1)+'.csv', c, list_ville(1))
+        conn.commit()
+    # if ville == 'Toulouse':
+    #     load_csv(list_ville(2)+'.csv', c, list_ville(2))
+    #     conn.commit()
+    # if ville == 'Lyon':
+    #     load_csv(list_ville(3)+'.csv', c, list_ville(3))
+    #     conn.commit()
 
 
 if __name__ == "__main__":
