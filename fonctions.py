@@ -1,7 +1,11 @@
-import csv
 import sqlite3
 import urllib.request
 import sys
+
+
+def list_ville(index):
+    list_ville = ['Montpellier','Rennes','Toulouse', 'Lyon']
+    return list_ville[index]
 
 def update_db(csv_url, outputfile):
     """This function, retrieve the csv from url and download this csv file
@@ -10,7 +14,9 @@ def update_db(csv_url, outputfile):
     urllib.request.urlretrieve(csv_url, outputfile)
     # logging.info('update_db: Mise a jour de la base de données')
 
-update_db('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv', 'montpellier.csv')
+update_db('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv', list_ville(0)+'.csv')
+
+
 
 def insert_csv_row(csv_row, cursor, ville):
     """ This function insert values in table 'infoarret'
@@ -21,8 +27,13 @@ def insert_csv_row(csv_row, cursor, ville):
     csv_row : retrieve the lines on the csv file.
 
     """
-    cursor.execute("""INSERT INTO infoarret VALUES (?,?,?,?,?,?,?,?,?,?,?) """,
-                   csv_row.strip().split(";"))
+    liste_row = csv_row.strip().split(";")
+    new_row = [liste_row[3], liste_row[4], liste_row[5], liste_row[7], ville]
+
+    cursor.execute("""INSERT INTO infoarret VALUES (?,?,?,?,?) """,
+                   new_row)
+
+
 
 def create_schema(cursor):
     """ This function create table 'infoarret' if not exist
@@ -34,19 +45,14 @@ def create_schema(cursor):
 
     """
     cursor.execute("""CREATE TABLE IF NOT EXISTS "infoarret" (
-    "course"	INTEGER,
-    "stop_code"	TEXT,
-    "stop_id"	INTEGER,
-    "stop_name"	TEXT,
-    "route_short_name"	TEXT,
-    "trip_headsign"	TEXT,
-    "direction_id"	INTEGER,
-    "is_theorical" INTEGER,
-    "departure_time"	TEXT,
-    "delay_sec"	INTEGER,
-    "dest_arr_code"	INTEGER
+    "Station"	TEXT,
+    "Ligne"	TEXT,
+    "Direction"	TEXT,
+    "Horaire"	TEXT,
+    "Ville" TEXT
     );""")
     # logging.info('create_schema: on cree les colonnes de la base')
+
 
 def load_csv(path, cursor, ville):
     """ This function load and read the csv file, and insert row in db file.
@@ -57,27 +63,23 @@ def load_csv(path, cursor, ville):
     path : Source of the csv file.
 
     """
-    with open(path, "r") as f:
-        # ignore the header
+    with open(path, "r") as f:    
         f.readline()
         line = f.readline()
-        # loop over the lines in the file
         while line:
             insert_csv_row(line, cursor, ville)
             line = f.readline()
     # logging.info('load_csv: Charge la base de données')
 
+
+
 def main():
     conn = sqlite3.connect('transport.db')
     c = conn.cursor()
     create_schema(c)
-    # csv = 'montpellier.csv'
-    load_csv('montpellier.csv', c, "montpellier")
+    load_csv(list_ville(0)+'.csv', c, list_ville(0))
     conn.commit()
     conn.close()
-
-
-
 
 
 
