@@ -1,5 +1,3 @@
-
-
 def insert_csv_row(csv_row, cursor, ville):
     """ This function insert values in table 'infoarret'
 
