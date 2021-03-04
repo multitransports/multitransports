@@ -1,4 +1,4 @@
-def requestnexttram(database, cursor, station, ville):
+def requestnexttram(cursor, station, ville):
     """The function configure the argument 'next'
     this function request the
     database for recuperate line in the column stop_name,delay_sec and
@@ -20,7 +20,7 @@ def requestnexttram(database, cursor, station, ville):
     return res
 # logging.info("next_tram: Affichage de la demande de l'utilisateur(argument next) ")
 
-def request_city_station(database, cursor,ville):
+def request_city_station(cursor,ville):
     res = []
     cursor.execute("""SELECT DISTINCT Station
     From infoarret WHERE Ville = ?""",
@@ -31,7 +31,7 @@ def request_city_station(database, cursor,ville):
     return res
 
 
-def request_line_station(database,cursor, ville ,ligne):
+def request_line_station(cursor, ville ,ligne):
     res = []
     cursor.execute("""SELECT DISTINCT Station
     FROM infoarret WHERE Ville = ?
@@ -42,7 +42,7 @@ def request_line_station(database,cursor, ville ,ligne):
     return res
 
 
-def request_next_to_direction(database, cursor,ville, station, ligne, direction):
+def request_next_to_direction(cursor,ville, station, ligne, direction):
     """ This function configure the argument 'time'
     this function request
     the database for recuperate the line in the column

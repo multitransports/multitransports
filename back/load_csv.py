@@ -9,7 +9,7 @@ def load_csv(path, cursor, ville):
     path : Source of the csv file.
 
     """
-    with open(path, "r") as f:    
+    with open(path, "r", encoding="utf-8") as f:    
         f.readline()
         line = f.readline()
         while line:
