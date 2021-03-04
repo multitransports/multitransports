@@ -10,8 +10,7 @@ def main():
     c = conn.cursor()
     create_schema(c)
     refresh(list_ville[0], c, conn)
-    refresh(list_ville[1], c, conn)
-
+    refresh(list_ville[1], c, conn)    
 
 if __name__ == "__main__":
     sys.exit(main())
