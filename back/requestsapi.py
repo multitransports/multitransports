@@ -20,7 +20,11 @@ def requestnexttram(cursor, station, ville):
     return res
 # logging.info("next_tram: Affichage de la demande de l'utilisateur(argument next) ")
 
+<<<<<<< HEAD
 def request_city_station(cursor,ville):
+=======
+def request_city_station( cursor,ville):
+>>>>>>> 57aa82bd183e61b4156de29818b3e55fa694edd7
     res = []
     cursor.execute("""SELECT DISTINCT Station
     From infoarret WHERE Ville = ?""",

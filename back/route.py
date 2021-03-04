@@ -1,7 +1,6 @@
 from flask import render_template, jsonify
 
 from back.requestsapi import *
-import json
 import sqlite3
 
 def entry_point():
@@ -35,5 +34,9 @@ def next_to_direction(ville, station, ligne, direction):
     conn = sqlite3.connect('transport.db')
     c = conn.cursor()
     c.row_factory = sqlite3.Row
+<<<<<<< HEAD
     res = request_next_to_direction( c, ville, station, ligne, direction)
+=======
+    res = request_next_to_direction(c, ville, station, ligne, direction)
+>>>>>>> 57aa82bd183e61b4156de29818b3e55fa694edd7
     return jsonify(res)
