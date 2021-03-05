@@ -7,6 +7,10 @@ from refresh import refresh
 
 
 def main():
+    """This function connect to the the
+    database 'transport.db' create the table
+    and refresh the row in the table
+    """
     conn = sqlite3.connect('transport.db')
     c = conn.cursor()
     create_schema(c)
