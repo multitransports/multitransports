@@ -62,3 +62,15 @@ def request_next_to_direction(cursor,ville, station, ligne, direction):
     for row in cursor.fetchall():
         res.append((dict(row)))
     return res
+
+
+def request_station_like(cursor,station,ville):
+    res=[]
+    rows = cursor.execute("""
+    SELECT * FROM infoarret
+    WHERE Station like ?
+    AND Ville = ?
+    """, ('%'+station+'%' , ville))
+    for row in cursor.fetchall():
+        res.append((dict(row)))
+    return res
