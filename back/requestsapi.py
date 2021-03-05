@@ -1,15 +1,17 @@
 def requestnexttram(cursor, station, ville):
-    """The function configure the argument 'next'
-    this function request the
-    database for recuperate line in the column stop_name,delay_sec and
-    route_short_name.
-    Then it returns the next passes in min,sec, the line and the direction.
+    """The function search on the table 'infoarret'
+    Then it returns the next passes the line and the direction.
+
     cursor : It acts like a position indicator and will be mostly use to
     retrieve data.
-    database : Search in the SQlite database.
+    
+    station : is the station to select for see the next tramway in 
+    this station
+
+    ville : Is the city for search station 
+    in this city
     """
     res=[]
-    #rows = 
     cursor.execute("""
     SELECT * FROM infoarret
     WHERE Station = ?
@@ -21,6 +23,17 @@ def requestnexttram(cursor, station, ville):
 # logging.info("next_tram: Affichage de la demande de l'utilisateur(argument next) ")
 
 def request_city_station(cursor,ville):
+    """This function search  from table 'infoarret'
+    return all station in the country selected.
+
+    cursor : It acts like a position indicator and will
+    be mostly use to retrieve data.
+
+    ville : Is the city for search all station 
+    in this city
+    """
+
+
     res = []
     cursor.execute("""SELECT DISTINCT Station
     From infoarret WHERE Ville = ?""",
@@ -32,6 +45,18 @@ def request_city_station(cursor,ville):
 
 
 def request_line_station(cursor, ville ,ligne):
+    """
+    The function search on the table 'infoarret'
+    Then it returns all station with number of line.
+
+    cursor : It acts like a position indicator and will be mostly use to
+    retrieve data.
+    
+    line : is the line to select for see all stations in this line
+
+    ville : Is the city for search station 
+    in this city"""
+
     res = []
     cursor.execute("""SELECT DISTINCT Station
     FROM infoarret WHERE Ville = ?
@@ -43,13 +68,24 @@ def request_line_station(cursor, ville ,ligne):
 
 
 def request_next_to_direction(cursor,ville, station, ligne, direction):
-    """ This function configure the argument 'time'
-    this function request
+    """ This function search on the table 'infoarret'
     the database for recuperate the line in the column
     (Station , line and direction) and return the request
+
     cursor : It acts like a position indicator and will be mostly use to
     retrieve data.
-    database : Search in the SQlite database
+
+    line : is the line to select for see all stations in this line
+
+    ville : Is the city for search station 
+    in this city
+
+    station : is the station to select for see the next tramway in 
+    this station
+
+    direction : Is the direction select for see the next tramway in
+    this direction
+
     """
     res = []
     cursor.execute("""
@@ -65,6 +101,17 @@ def request_next_to_direction(cursor,ville, station, ligne, direction):
 
 
 def request_station_like(cursor,station,ville):
+    """This function search on the table 'infoarret'
+    then it return, the station start with the search
+    in the city choice.
+
+    ville : Is the city for search station 
+    in this city
+
+    station : is the station to select for see the next tramway in 
+    this station
+    """
+    
     res=[]
     rows = cursor.execute("""
     SELECT * FROM infoarret
