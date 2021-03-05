@@ -12,6 +12,8 @@ app.add_url_rule('/<ville>/stations/<station>', view_func=route.nexttram)
 app.add_url_rule('/<ville>/stations/', view_func=route.citystations)
 app.add_url_rule('/<ville>/ligne/<ligne>', view_func=route.line_station)
 app.add_url_rule('/<ville>/<station>/<ligne>/<direction>', view_func=route.next_to_direction)
+app.add_url_rule('/<ville>/stationslike/<station>', view_func=route.station_like)
+
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)

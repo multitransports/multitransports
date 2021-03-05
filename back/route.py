@@ -36,3 +36,10 @@ def next_to_direction(ville, station, ligne, direction):
     c.row_factory = sqlite3.Row
     res = request_next_to_direction(c, ville, station, ligne, direction)
     return jsonify(res)
+
+def station_like(station, ville):
+    conn = sqlite3.connect('transport.db')
+    c = conn.cursor()
+    c.row_factory = sqlite3.Row
+    res = request_station_like(c,station,ville)
+    return jsonify(res)
