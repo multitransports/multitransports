@@ -6,6 +6,8 @@ def insert_csv_row(csv_row, cursor, ville):
 
     csv_row : retrieve the lines on the csv file.
 
+    ville : Is the city for add rows in this colomn.
+
     """
     
     if ville == 'Montpellier':
