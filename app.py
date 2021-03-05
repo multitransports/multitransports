@@ -1,15 +1,17 @@
-from flask import Flask, render_template
+import os
+from flask import Flask
+from flask_cors import CORS
+from back import route
+template_dir = os.path.abspath('./front/templates')
+app = Flask(__name__, template_folder=template_dir)
+CORS(app)
 
-app = Flask(__name__)
-
-@app.route('/')
-def entry_point():
-    return render_template('./app.html')
-
-@app.route('/hello_world')
-def hello_world():
-    return 'Hello Boug !'
+app.add_url_rule('/', view_func=route.entry_point)
+app.add_url_rule('/hello_world', view_func=route.hello_world)
+app.add_url_rule('/<ville>/stations/<station>', view_func=route.nexttram)
+app.add_url_rule('/<ville>/stations/', view_func=route.citystations)
+app.add_url_rule('/<ville>/ligne/<ligne>', view_func=route.line_station)
+app.add_url_rule('/<ville>/<station>/<ligne>/<direction>', view_func=route.next_to_direction)
 
 if __name__ == '__main__':
-    app.run(debug=True)
-    
+    app.run(debug=True, use_reloader=True)
