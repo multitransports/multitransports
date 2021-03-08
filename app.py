@@ -11,6 +11,7 @@ sched.start()
 template_dir = os.path.abspath('./front/templates')
 app = Flask(__name__, template_folder=template_dir)
 CORS(app)
+main()
 
 app.add_url_rule('/', view_func=route.entry_point)
 app.add_url_rule('/hello_world', view_func=route.hello_world)
