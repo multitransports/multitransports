@@ -35,7 +35,7 @@ def request_city_station(cursor,ville):
 
 
     res = []
-    cursor.execute("""SELECT DISTINCT Station
+    cursor.execute("""SELECT *
     From infoarret WHERE Ville = ?""",
     (ville,))
     for row in cursor.fetchall():
