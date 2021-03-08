@@ -2,6 +2,12 @@ import os
 from flask import Flask
 from flask_cors import CORS
 from back import route
+from back.main import main
+from apscheduler.schedulers.background import BackgroundScheduler
+sched = BackgroundScheduler(daemon=True)
+sched.add_job(main,'interval',seconds=59)
+sched.start()
+
 template_dir = os.path.abspath('./front/templates')
 app = Flask(__name__, template_folder=template_dir)
 CORS(app)
