@@ -12,6 +12,6 @@ def refresh(ville, cursor, conn):
     retrieve data.
     
     """
-    urllib.request.urlretrieve(ville[2], ville[1])
-    load_csv(ville[1], cursor, ville[0])
+    urllib.request.urlretrieve(ville["url"], ville["file"])
+    load_csv(ville["file"], cursor, ville["name"])
     conn.commit()
