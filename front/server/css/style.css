@@ -1,0 +1,18 @@
+.navbar-brand .img{
+    height: 50px;
+}
+
+nav a img{
+    margin: auto;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.navbar-expand-lg{
+    justify-content: center;
+}
