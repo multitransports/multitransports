@@ -1,7 +1,7 @@
 from flask import render_template, jsonify
 
 from back.requestsapi import *
-import sqlite3
+
 
 def entry_point():
     return render_template('./app.html')
