@@ -41,12 +41,20 @@
 // search.addEventListener('input', () =>searchStation(search.value))
 // ;
 
+
+
+const btnm = document.getElementById('button_montpellier');
+const btnr = document.getElementById('button_rennes');
 const search = document.getElementById('search');
 const matchlist = document.getElementById('result');
+var url = "http://127.0.0.1:5000/Montpellier/stations"
+const selectCity = selectedcity => {
+    url = "http://127.0.0.1:5000/"+selectedcity+"/stations"
+    return "http://127.0.0.1:5000/"+selectedcity+"/stations"
+    };
 
-
-const searchStation = async searchText => {
-    const res = await fetch("http://127.0.0.1:5000/Montpellier/stations/");
+const searchStation = async (searchText, url) => {
+    const res = await fetch(url);
     const stations = await res.json();
 
     console.log(stations)
@@ -83,5 +91,6 @@ const outputHtml = matches => {
     }
 }
 
-search.addEventListener('input', () =>searchStation(search.value))
-;
+search.addEventListener('input', () =>searchStation(search.value, url ));
+btnm.addEventListener('click', () =>selectCity(btnm.value));
+btnr.addEventListener('click', () =>selectCity(btnr.value));
