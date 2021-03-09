@@ -38,7 +38,6 @@ def citystations(ville):
     """
     conn = sqlite3.connect('transport.db')
     c = conn.cursor()
-    c.row_factory = sqlite3.Row
     res = request_city_station(c, ville)
     return jsonify(res)
 
@@ -56,7 +55,6 @@ def line_station(ville, ligne):
     """
     conn = sqlite3.connect('transport.db')
     c = conn.cursor()
-    c.row_factory = sqlite3.Row
     res = request_line_station(c, ville, ligne)
     return jsonify(res)
 
@@ -81,7 +79,6 @@ def next_to_direction(ville, station, ligne, direction):
     """
     conn = sqlite3.connect('transport.db')
     c = conn.cursor()
-    c.row_factory = sqlite3.Row
     res = request_next_to_direction(c, ville, station, ligne, direction)
     return jsonify(res)
 
@@ -99,6 +96,5 @@ def station_like(station, ville):
     """
     conn = sqlite3.connect('transport.db')
     c = conn.cursor()
-    c.row_factory = sqlite3.Row
     res = request_station_like(c,station,ville)
     return jsonify(res)

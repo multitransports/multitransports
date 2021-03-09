@@ -1,3 +1,5 @@
+import sqlite3
+
 def requestnexttram(cursor, station, ville):
     """The function search on the table 'infoarret'
     Then it returns the next passes the line and the direction.
@@ -11,6 +13,7 @@ def requestnexttram(cursor, station, ville):
     ville : Is the city for search station 
     in this city
     """
+    cursor.row_factory = sqlite3.Row
     res=[]
     cursor.execute("""
     SELECT * FROM infoarret
@@ -18,9 +21,10 @@ def requestnexttram(cursor, station, ville):
     AND Ville = ?
     """, (station ,ville,))
     for row in cursor.fetchall():
-        res.append((dict(row)))
+        res.append(dict(row))
     return res
 # logging.info("next_tram: Affichage de la demande de l'utilisateur(argument next) ")
+    
 
 def request_city_station(cursor,ville):
     """This function search  from table 'infoarret'
@@ -33,13 +37,13 @@ def request_city_station(cursor,ville):
     in this city
     """
 
-
+    cursor.row_factory = sqlite3.Row
     res = []
     cursor.execute("""SELECT *
     From infoarret WHERE Ville = ?""",
     (ville,))
     for row in cursor.fetchall():
-        res.append((dict(row)))
+        res.append(dict(row))
 
     return res
 
@@ -56,7 +60,7 @@ def request_line_station(cursor, ville ,ligne):
 
     ville : Is the city for search station 
     in this city"""
-
+    cursor.row_factory = sqlite3.Row
     res = []
     cursor.execute("""SELECT DISTINCT Station
     FROM infoarret WHERE Ville = ?
@@ -87,6 +91,7 @@ def request_next_to_direction(cursor,ville, station, ligne, direction):
     this direction
 
     """
+    cursor.row_factory = sqlite3.Row
     res = []
     cursor.execute("""
     SELECT * FROM infoarret
@@ -111,9 +116,9 @@ def request_station_like(cursor,station,ville):
     station : is the station to select for see the next tramway in 
     this station
     """
-    
+    cursor.row_factory = sqlite3.Row
     res=[]
-    rows = cursor.execute("""
+    cursor.execute("""
     SELECT * FROM infoarret
     WHERE Station like ?
     AND Ville = ?
