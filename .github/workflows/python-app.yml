@@ -32,6 +32,7 @@ jobs:
     - name: auto pdoc
       run: |
         pdoc3 --html -o tmp .
+        echo O | rmdir /S docs
         mkdir -p docs
         mv tmp/multitransports/* docs/
         rm -rf tmp/
