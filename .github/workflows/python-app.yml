@@ -33,7 +33,7 @@ jobs:
       run: |
         pdoc3 --html -o tmp .
         mkdir -p docs
-        mv tmp/API_ong/* docs/
+        mv tmp/multitransports/* docs/
         rm -rf tmp/
     - name: Commit files
       run: |
