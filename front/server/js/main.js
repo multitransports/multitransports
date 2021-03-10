@@ -1,48 +1,3 @@
-// const search = document.getElementById('search');
-// const matchlist = document.getElementById('match-list');
-
-
-// const searchStation = async searchText => {
-//     const res = await fetch("http://127.0.0.1:5000/Montpellier/stations/");
-//     const stations = await res.json();
-
-//     console.log(stations)
-//     let matches = stations.filter(station =>{
-//         const regex = new RegExp(`^${searchText}`, 'gi');
-//         return station.Station.match(regex) || station.Ligne.match(regex)
-//         ;
-
-//     });
-// if(searchText.length === 0){
-//     matches = [];
-// }
-
-//     outputHtml(matches);
-// };
-
-
-// const outputHtml = matches => {
-//     if(matches.length > 0){
-//         const html = matches.map(match =>`
-//             <div class = "card card-body mb-2">
-//             <div class ="card-header">${match.Station}</div>
-//                 <h6>Ligne : ${match.Ligne} Vers ${match.Direction}
-//                 Prochain passage à : <span
-//                 class="text-success">${match.Horaire}</span></h6>
-//                 <small> Ville : ${match.Ville}</small>
-//                 </div>
-
-//                 `
-//                 ).join('');
-//             matchlist.innerHTML = html;
-//     }
-// }
-
-// search.addEventListener('input', () =>searchStation(search.value))
-// ;
-
-
-
 const btnm = document.getElementById('button_montpellier');
 const btnr = document.getElementById('button_rennes');
 const search = document.getElementById('search');
@@ -91,6 +46,34 @@ const outputHtml = matches => {
     }
 }
 
+
+
+const green = btn => {
+    console.log(btn)
+    btn.style.backgroundColor = "green"
+    btn.style.color = "white"
+    if (btn == btnm) {
+        btnr.style.backgroundColor = "white"
+        btnr.style.color = "grey"
+    }
+    else if (btn == btnr) {
+        btnm.style.backgroundColor = "white"
+        btnm.style.color = "grey"
+    }
+    };
+
+
+
+
 search.addEventListener('input', () =>searchStation(search.value, url ));
 btnm.addEventListener('click', () =>selectCity(btnm.value));
+btnm.addEventListener('click', () => green(btnm));
 btnr.addEventListener('click', () =>selectCity(btnr.value));
+btnr.addEventListener('click', () => green(btnr));
+
+
+
+
+
+
+
