@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.9.2" />
-<title>multitransports.back.refresh API documentation</title>
+<title>back.create_schema API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,30 +19,31 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>multitransports.back.refresh</code></h1>
+<h1 class="title">Module <code>back.create_schema</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import urllib.request
-from back.load_csv import load_csv
+<pre><code class="python">def create_schema(cursor):
+    &#34;&#34;&#34; This function create table &#39;infoarret&#39; if not exist
 
-def refresh(ville, cursor, conn):
-    &#34;&#34;&#34;This function download the csv file and
-    add rows in the csv file
-
-    ville : is the city if you want download the csv
-    exemple : ville(0) is Montpellier
+    this table contains 11 columns and determinate the type.
 
     cursor : It acts like a position indicator and will be mostly use to
     retrieve data.
-    
+
     &#34;&#34;&#34;
-    urllib.request.urlretrieve(ville[&#34;url&#34;], ville[&#34;file&#34;])
-    load_csv(ville[&#34;file&#34;], cursor, ville[&#34;name&#34;])
-    conn.commit()</code></pre>
+    cursor.execute(&#34;&#34;&#34;DROP TABLE IF EXISTS &#34;infoarret&#34; &#34;&#34;&#34;)
+    cursor.execute(&#34;&#34;&#34;CREATE TABLE IF NOT EXISTS &#34;infoarret&#34; (
+    &#34;Station&#34;   TEXT,
+    &#34;Ligne&#34;     TEXT,
+    &#34;Direction&#34; TEXT,
+    &#34;Horaire&#34;   TEXT,
+    &#34;Ville&#34; TEXT
+    );&#34;&#34;&#34;)
+    # logging.info(&#39;create_schema: on cree les colonnes de la base&#39;)</code></pre>
 </details>
 </section>
 <section>
@@ -52,34 +53,35 @@ def refresh(ville, cursor, conn):
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="multitransports.back.refresh.refresh"><code class="name flex">
-<span>def <span class="ident">refresh</span></span>(<span>ville, cursor, conn)</span>
+<dt id="back.create_schema.create_schema"><code class="name flex">
+<span>def <span class="ident">create_schema</span></span>(<span>cursor)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>This function download the csv file and
-add rows in the csv file</p>
-<p>ville : is the city if you want download the csv
-exemple : ville(0) is Montpellier</p>
+<div class="desc"><p>This function create table 'infoarret' if not exist</p>
+<p>this table contains 11 columns and determinate the type.</p>
 <p>cursor : It acts like a position indicator and will be mostly use to
 retrieve data.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def refresh(ville, cursor, conn):
-    &#34;&#34;&#34;This function download the csv file and
-    add rows in the csv file
+<pre><code class="python">def create_schema(cursor):
+    &#34;&#34;&#34; This function create table &#39;infoarret&#39; if not exist
 
-    ville : is the city if you want download the csv
-    exemple : ville(0) is Montpellier
+    this table contains 11 columns and determinate the type.
 
     cursor : It acts like a position indicator and will be mostly use to
     retrieve data.
-    
+
     &#34;&#34;&#34;
-    urllib.request.urlretrieve(ville[&#34;url&#34;], ville[&#34;file&#34;])
-    load_csv(ville[&#34;file&#34;], cursor, ville[&#34;name&#34;])
-    conn.commit()</code></pre>
+    cursor.execute(&#34;&#34;&#34;DROP TABLE IF EXISTS &#34;infoarret&#34; &#34;&#34;&#34;)
+    cursor.execute(&#34;&#34;&#34;CREATE TABLE IF NOT EXISTS &#34;infoarret&#34; (
+    &#34;Station&#34;   TEXT,
+    &#34;Ligne&#34;     TEXT,
+    &#34;Direction&#34; TEXT,
+    &#34;Horaire&#34;   TEXT,
+    &#34;Ville&#34; TEXT
+    );&#34;&#34;&#34;)</code></pre>
 </details>
 </dd>
 </dl>
@@ -95,12 +97,12 @@ retrieve data.</p></div>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="multitransports.back" href="index.html">multitransports.back</a></code></li>
+<li><code><a title="back" href="index.html">back</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="multitransports.back.refresh.refresh" href="#multitransports.back.refresh.refresh">refresh</a></code></li>
+<li><code><a title="back.create_schema.create_schema" href="#back.create_schema.create_schema">create_schema</a></code></li>
 </ul>
 </li>
 </ul>

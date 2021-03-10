@@ -37,3 +37,10 @@
 2021-03-10 11:01:12,418 Successfully loaded extension "markdown.extensions.smarty.SmartyExtension".
 2021-03-10 11:01:12,419 Successfully imported extension module "markdown.extensions.toc".
 2021-03-10 11:01:12,419 Successfully loaded extension "markdown.extensions.toc.TocExtension".
+2021-03-10 11:20:22,108 Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2021-03-10 11:20:22,108 Added job "main" to job store "default"
+2021-03-10 11:20:22,108 Scheduler started
+2021-03-10 11:20:22,108 Looking for jobs to run
+2021-03-10 11:20:22,111 the db is going to initialize
+2021-03-10 11:20:22,111 Next wakeup is due at 2021-03-10 11:21:21.107775+00:00 (in 58.996260 seconds)
+2021-03-10 11:20:28,203 the db is initialize
