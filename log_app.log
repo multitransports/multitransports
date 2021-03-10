@@ -1,0 +1,39 @@
+2021-03-10 11:00:40,880 Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2021-03-10 11:00:40,880 Added job "main" to job store "default"
+2021-03-10 11:00:40,880 Scheduler started
+2021-03-10 11:00:40,880 Looking for jobs to run
+2021-03-10 11:00:40,882 the db is going to initialize
+2021-03-10 11:00:40,882 Next wakeup is due at 2021-03-10 11:01:39.879975+00:00 (in 58.997236 seconds)
+2021-03-10 11:00:55,121 the db is initialize
+2021-03-10 11:00:57,089 Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2021-03-10 11:00:57,090 Added job "main" to job store "default"
+2021-03-10 11:00:57,090 Scheduler started
+2021-03-10 11:00:57,090 Looking for jobs to run
+2021-03-10 11:00:57,091 the db is going to initialize
+2021-03-10 11:00:57,092 Next wakeup is due at 2021-03-10 11:01:56.089740+00:00 (in 58.997669 seconds)
+2021-03-10 11:01:06,712 the db is initialize
+2021-03-10 11:01:06,728 Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2021-03-10 11:01:06,729 Added job "main" to job store "default"
+2021-03-10 11:01:06,729 Scheduler started
+2021-03-10 11:01:06,729 Looking for jobs to run
+2021-03-10 11:01:06,730 the db is going to initialize
+2021-03-10 11:01:06,730 Next wakeup is due at 2021-03-10 11:02:05.728879+00:00 (in 58.997971 seconds)
+2021-03-10 11:01:12,242 the db is initialize
+2021-03-10 11:01:12,410 Successfully imported extension module "markdown.extensions.abbr".
+2021-03-10 11:01:12,410 Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2021-03-10 11:01:12,413 Successfully imported extension module "markdown.extensions.attr_list".
+2021-03-10 11:01:12,413 Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2021-03-10 11:01:12,414 Successfully imported extension module "markdown.extensions.def_list".
+2021-03-10 11:01:12,414 Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2021-03-10 11:01:12,415 Successfully imported extension module "markdown.extensions.fenced_code".
+2021-03-10 11:01:12,416 Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2021-03-10 11:01:12,416 Successfully imported extension module "markdown.extensions.footnotes".
+2021-03-10 11:01:12,416 Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2021-03-10 11:01:12,417 Successfully imported extension module "markdown.extensions.tables".
+2021-03-10 11:01:12,417 Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2021-03-10 11:01:12,418 Successfully imported extension module "markdown.extensions.admonition".
+2021-03-10 11:01:12,418 Successfully loaded extension "markdown.extensions.admonition.AdmonitionExtension".
+2021-03-10 11:01:12,418 Successfully imported extension module "markdown.extensions.smarty".
+2021-03-10 11:01:12,418 Successfully loaded extension "markdown.extensions.smarty.SmartyExtension".
+2021-03-10 11:01:12,419 Successfully imported extension module "markdown.extensions.toc".
+2021-03-10 11:01:12,419 Successfully loaded extension "markdown.extensions.toc.TocExtension".
