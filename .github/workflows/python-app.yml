@@ -34,7 +34,7 @@ jobs:
         pdoc3 --html -o tmp back/
         rm -rf docs
         mkdir -p docs/
-        mv tmp/multitransports/* docs/
+        mv tmp/back/* docs/
         rm -rf tmp/
     - name: Commit files
       run: |
