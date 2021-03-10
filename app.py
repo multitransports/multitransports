@@ -1,9 +1,16 @@
 import os
+import logging
 from flask import Flask
 from flask_cors import CORS
 from back import route
 from back.main import main
 from apscheduler.schedulers.background import BackgroundScheduler
+
+logging.basicConfig(
+filename='log_app.log',
+format='%(asctime)s %(message)s',
+level=logging.DEBUG)
+
 sched = BackgroundScheduler(daemon=True)
 sched.add_job(main,'interval',seconds=59)
 sched.start()
@@ -11,7 +18,9 @@ sched.start()
 template_dir = os.path.abspath('./front/templates')
 app = Flask(__name__, template_folder=template_dir)
 CORS(app)
+logging.debug("the db is going to initialize")
 main()
+logging.debug("the db is initialize")
 
 app.add_url_rule('/', view_func=route.entry_point)
 app.add_url_rule('/hello_world', view_func=route.hello_world)
