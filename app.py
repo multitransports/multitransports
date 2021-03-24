@@ -32,4 +32,5 @@ app.add_url_rule('/<ville>/stationslike/<station>', view_func=route.station_like
 
 
 if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=3000)
     app.run(debug=True, use_reloader=True)
