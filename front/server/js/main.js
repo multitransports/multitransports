@@ -2,10 +2,10 @@ const btnm = document.getElementById('button_montpellier');
 const btnr = document.getElementById('button_rennes');
 const search = document.getElementById('search');
 const matchlist = document.getElementById('result');
-var url = "http://127.0.0.1:5000/Montpellier/stations"
+var url = "http://40.66.46.243:3000/Montpellier/stations"
 const selectCity = selectedcity => {
-    url = "http://127.0.0.1:5000/"+selectedcity+"/stations"
-    return "http://127.0.0.1:5000/"+selectedcity+"/stations"
+    url = "http://40.66.46.243:3000/"+selectedcity+"/stations"
+    return "http://40.66.46.243:3000/"+selectedcity+"/stations"
     };
 
 const searchStation = async (searchText, url) => {
